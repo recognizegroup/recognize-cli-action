@@ -1,0 +1,38 @@
+name: 'Recognize CLI action'
+description: 'Execute Recognize CLI commands.'
+inputs:
+  command:
+    description: Command to execute
+    default: policies validate
+    required: true
+  version:
+    description: Version to use
+    default: v0.0.25
+    required: true
+  application-insights-key:
+    description: Key to use for communcation with application insights
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - shell: sh
+      env:
+        RECOGNIZE_CLI_APPLICATION_INSIGHTS_KEY: ${{ inputs.application-insights-key }}
+        RECOGNIZE_CLI_VERSION: ${{ inputs.version }}
+        COMMAND: ${{ inputs.command }}
+      run: |
+        set -e
+
+        COMMAND=${COMMAND:?'COMMAND environment variable missing.'}
+        RECOGNIZE_CLI_VERSION=${RECOGNIZE_CLI_VERSION:?'RECOGNIZE_CLI_VERSION environment variable missing.'}
+
+        echo "Downloading latest version of the CLI tool..."
+
+        curl -s -o recognize-cli https://strecognizecli001.blob.core.windows.net/downloads/$RECOGNIZE_CLI_VERSION/recognize_cli_linux_386
+        chmod +x recognize-cli
+
+        mv recognize-cli /usr/local/bin
+
+        recognize-cli $COMMAND
+
+        rm /usr/local/bin/recognize-cli

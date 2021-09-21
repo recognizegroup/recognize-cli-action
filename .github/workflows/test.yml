@@ -1,0 +1,15 @@
+name: 'Test action'
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  test:
+    name: Test locally
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          application-insights-key: ${{ secrets.RECOGNIZE_CLI_APPLICATION_INSIGHTS_KEY }}
