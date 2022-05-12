@@ -7,7 +7,7 @@ inputs:
     required: true
   version:
     description: Version to use
-    default: v0.0.25
+    default: v1.0.0
     required: true
   application-insights-key:
     description: Key to use for communication with application insights
