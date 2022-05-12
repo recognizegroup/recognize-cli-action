@@ -16,5 +16,5 @@ jobs:
         with:
           application-insights-key: ${{ secrets.RECOGNIZE_CLI_APPLICATION_INSIGHTS_KEY }}  # (required) Key for communication with the application insights instance
           command: policies validate                                                       # (optional) Specify custom command to execute
-          version: v0.0.25                                                                 # (optional) Install a specific version of the CLI
+          version: v1.0.0                                                                  # (optional) Install a specific version of the CLI
 ```
