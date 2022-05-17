@@ -1,2 +1,4 @@
+# $schema: https://policy.recognize.nl/recognize-policies-schema.json
+
 policies:
   development: 1.0.0
