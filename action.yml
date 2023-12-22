@@ -28,7 +28,7 @@ runs:
 
         echo "Downloading latest version of the CLI tool..."
 
-        curl -sfS -o recognize-cli https://strecognizecli001.blob.core.windows.net/downloads/$RECOGNIZE_CLI_VERSION/recognize_cli_linux_386
+        curl -sfS -o recognize-cli https://strecognizeclireleaseprd.blob.core.windows.net/downloads/$RECOGNIZE_CLI_VERSION/recognize_cli_linux_386
         chmod +x recognize-cli
 
         mv recognize-cli /usr/local/bin
